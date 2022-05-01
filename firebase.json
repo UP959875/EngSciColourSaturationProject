@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "snakeGame",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
