@@ -6,9 +6,9 @@
 
 		<meta charset="utf-8" />
 
-		<title>Snake Game Research</title>
+		<title>Snake Game Research - Version 1</title>
 
-		<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:bold' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Arial:bold' rel='stylesheet' type='text/css'>
 
 		<style type="text/css">
 
@@ -26,6 +26,10 @@
 
 			h1 { font-family: 'Cabin Sketch', arial, serif; font-size:50px;
 				 text-indent: -100px;margin-bottom:20;margin-top:30px}
+				
+			div { font-weight: bold; font-size:36px}
+				 
+
 			
 		</style>
 
@@ -54,6 +58,7 @@
 
 				var score = 0;
 				var inc_score = 50;
+				var highScore = 0;
 
 				var sum = 0, easy = 0;
 
@@ -79,10 +84,12 @@
 					do {
 						x = Math.random() * 45|0;
 						y = Math.random() * 30|0;
+						ctx.fillStyle = `rgb(255, 191, 191)`;
 					} while (map[x][y]);
 
 					map[x][y] = 1;
-					ctx.strokeRect(x * 10 + 1, y * 10 + 1, 10 - 2, 10 - 2);
+					ctx.fillRect(x * 10 + 1, y * 10 + 1, 10 - 2, 10 - 2);
+					ctx.fillStyle = `rgb(255, 191, 191)`;
 				}
 				placeFood();
 
@@ -111,13 +118,14 @@
 						&& 2 !== map[X][Y]) {
 
 						if (1 === map[X][Y]) {
-							score+= Math.max(5, inc_score);
+							score+= 1;
 							inc_score = 50;
 							placeFood();
 							elements++;
 						}
 
 						ctx.fillRect(X * 10, Y * 10, 10 - 1, 10 - 1);
+						ctx.fillStyle = 'green';
 						map[X][Y] = 2;
 						queue.unshift([X, Y]);
 
@@ -133,8 +141,14 @@
 
 					} else if (!turn.length) {
 
-						if (confirm("You lost! Play again? Your Score is " + score)) {
+						if (confirm("You lost! Do you want to play again? Your Score is " + score)) {
 
+							if (highScore < score){
+								highScore = score;
+							}
+							else{}
+
+							document.getElementById("highscore").innerHTML = "Highscore = " + highScore;
 							ctx.clearRect(0, 0, 450, 300);
 
 							queue = [];
@@ -156,8 +170,34 @@
 
 							placeFood();
 						} else {
-							window.clearInterval(interval);
-							window.location = "/projects/";
+
+							if (highScore < score){
+								highScore = score;
+							}
+							else{}
+
+							document.getElementById("highscore").innerHTML = "Highscore = " + highScore;
+							
+							ctx.clearRect(0, 0, 450, 300);
+
+							queue = [];
+
+							elements = 1;
+							map = [];
+
+							X = 5 + (Math.random() * (45 - 10))|0;
+							Y = 5 + (Math.random() * (30 - 10))|0;
+
+							direction = Math.random() * 3 | 0;
+
+							score = 0;
+							inc_score = 50;
+
+							for (i = 0; i < 45; i++) {
+								map[i] = [];
+							}
+
+							placeFood();
 						}
 					}
 
@@ -193,16 +233,47 @@
 						} else if (dir === 218) easy = 1;
 					}
 				}
+				document.getElementById("timer").innerHTML = 05  + ":" + 01;
+				startTimer();
+
+				function startTimer() {
+				var presentTime = document.getElementById('timer').innerHTML;
+				var timeArray = presentTime.split(/[:]+/);
+				var m = timeArray[0];
+				var s = checkSecond((timeArray[1] - 1));
+				if(s==59){m=m-1}
+				if(m<0){
+					return
+				}
+				
+				document.getElementById('timer').innerHTML =
+					m + ":" + s;
+				console.log(m)
+				setTimeout(startTimer, 1000);
+				
+				}
+
+				function checkSecond(sec) {
+				if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+				if (sec < 0) {sec = "59"};
+				return sec;
+				}
 			}
-
-
+			
+			
 		</script>
 	</head>
 
 	<body onload="init()">
-		<h1>Snake Game Engineering Science</h1>
-        <h2>How to play</h2> 
-            <h4>Control the snake via arrow keys : UP , DOWN , LEFT , RIGHT</h4>
-            <h4>Collect as man apples as possible</h4>
+		<h1>Snake Game Engineering Science - Version 1</h1>
+        <h2>How to play:</h2> 
+            <li>Control the snake via arrow keys: UP, DOWN, LEFT, RIGHT</li>
+            <li>Collect as many apples as possible</li>
+			<li>Please follow the timer, and go back to the survey when it is up</li>
+			<h1></h1>
+			<div>Time left = <span id="timer"></span></div>
+			<div id="highscore">Highscore = 0</div>
+			<h1></h1>
 	</body>
+
 </html>

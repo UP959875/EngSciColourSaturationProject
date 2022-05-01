@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- Custom style CSS -->
+
+    <title>Engineering Science Project Intro Page</title>
+    <style>
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+
+      .messageOne { background: #ECEFF1; max-width: 360px; margin: 15px auto 16px; padding: 10px 0px 16px; }
+      .messageOne h1 { font-size: 40px; font-weight: 300; color: #2196f3; text-align: center; margin: 0 0 16px;}
+      .messageOne p { color: rgba(0,0,0,0.6); line-height: 140%; margin: 16px 0px 24px; text-align: center;font-size: 16px; padding:0; margin:0;}  
+
+      .messageTwo { background: #ECEFF1; max-width: 360px; margin: 15px auto 16px; padding: 10px 0px 16px; }
+      .messageTwo h2 { font-size: 32px; font-weight: 300; color: #2196f3; text-align: center; margin: 60px 0px 16px; }
+      .messageTwo p { color: rgba(0,0,0,0.6); line-height: 140%; margin: 16px 0px 24px; text-align: center;font-size: 16px; padding:0; margin:0;}
+      
+
+      .messageThree h2 { font-size: 32px; font-weight: 300; color: #2196f3; text-align: center; margin: 100px 0px 47px; }
+      .messageThree p { color: rgba(0,0,0,0.6); line-height: 0%; margin: 0px 0px 47px; text-align: center;font-size: 16px; }
+      
+      .messageFour h2 { font-size: 32px; font-weight: 300; color: #2196f3; text-align: center; margin: 100px 0px 47px; }
+      .messageFour p { color: rgba(0,0,0,0.6); line-height: 0%; margin: 0px 0px 47px; text-align: center;font-size: 16px; }
+      
+
+      .button  {background-color: #2196f3; border: none; color: white; padding: 20px 40px; text-align: center; margin-left: 44%; margin-bottom: 1%;text-decoration: none;display: inline-block;line-height: 0%;font-size: 16px;}
+      .button:hover {background-color: #2196f3}
+    </style>
+
+  </head>
+
+  <body>
+    
+
+    <main>
+      
+        <div class="messageOne">
+          <h1>What is our project?</h1>
+          <p>We are testing if colour and saturation values of video games affect behaviour. Our test will involve you playing snake. You will randomly be assigned either a normal version, or one with changed colours. Afterwards, please fill out the survey.</p>
+        
+        </div>
+  
+        <div class="messageTwo">
+          <h2>How can I participate?</h1>
+          <p>You can participate by starting to fill out the beginning of the survey. After that, please start playing snake until the timer is up, and continue the survey.</p>
+    
+        </div>
+  
+        <div class="messageThree">
+          <h2>Link to survey</h1>
+          <p>Please click the button below to open a link to the survey.</p>
+          <p></p>
+          <button class="button" type="button" onclick="window.location.href='https://forms.gle/pc28yHu5TbYvHfem6';" >Click me for the survey</button>
+        </div>
+       
+  
+        <div class="messageFour">
+          <h2>Link to the game</h1>
+          <p>Please click the button below to open a link to the game.</p>
+          <button class="button" type="button" onclick="randomPicker(); return false" >Click me for the game</button>
+        </div>
+  
+        
+  
+    </main>
+</body>
+</html>
+
+<script type="text/javascript">
+    var urls = [
+        "snake1.html",
+        "snake2.html",
+        "snake3.html"
+    ];
+
+    function randomPicker() {
+        var url = urls[Math.floor(Math.random()*urls.length)];
+        window.location = url;
+    }
+</script>
+    
+  
+      
